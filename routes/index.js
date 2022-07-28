@@ -22,7 +22,7 @@ router.post("/oauth/token", function (req, res) {
   }));
 });
 
-router.post("events", function (req, res) {
+router.post("/events", function (req, res) {
   console.log ("--------------------------NEW EVENT REQUEST---------------------")
   console.log (req.body);
   console.log ("++++++++++++++++++++++++++END BODY. HEADER:");
