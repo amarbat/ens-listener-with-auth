@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 router.post("/oauth/token", function (req, res) {
   console.log ("--------------------------NEW AUTH REQUEST---------------------")
-  console.log (JSON.parse(JSON.stringify(req.body)));
+  console.log (req.body);
   console.log ("++++++++++++++++++++++++++END BODY. HEADER:");
   console.log (req.headers);
   console.log ("Sent auth:2YotnFZFEjr1zCsiCMWpAA");
