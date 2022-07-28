@@ -13,7 +13,9 @@ router.post("/oauth/token", function (req, res) {
   console.log (req.headers);
   console.log ("Sent auth:2YotnFZFEjr1zCsiCMWpAA");
   console.log (req.get("clientId"));
+  console.log (req.get("clientID"));
   console.log (req.get("client_id"));
+  console.log (req.get("client_ID"));
   console.log ("==========================END=============================");
 
   res.send (JSON.parse(JSON.stringify({
