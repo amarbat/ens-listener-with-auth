@@ -8,18 +8,18 @@ router.get('/', function(req, res, next) {
 
 router.post("/oauth/token", function (req, res) {
   console.log ("--------------------------NEW AUTH REQUEST---------------------")
-  console.log (req.body);
+  console.log (JSON.parse(JSON.stringify(req.body)));
   console.log ("++++++++++++++++++++++++++END BODY. HEADER:");
   console.log (req.headers);
   console.log ("Sent auth:2YotnFZFEjr1zCsiCMWpAA");
   console.log ("==========================END=============================");
 
-  res.send (JSON.stringify({
+  res.send (JSON.parse(JSON.stringify({
     "access_token": "2YotnFZFEjr1zCsiCMWpAA",
     "token_type":"bearer",
     "expires_in":3600,
     "scope":"write"
-  }));
+  })));
 });
 
 router.post("/events", function (req, res) {
