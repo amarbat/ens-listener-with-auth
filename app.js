@@ -8,7 +8,7 @@ var Request = OAuth2Server.Request;
 var Response = OAuth2Server.Response;
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var jwt = require("jsonwebtoken");
 var app = express();
 
 // view engine setup
@@ -46,6 +46,28 @@ app.post("/oauth2/token", function (req,res){
         "token_type": "bearer",
         "expires_in": 3600
       };
+      console.log (body);
+      res.json(body);
+    }).catch (err => {
+      res.status(err.code || 500).json(err);
+    })
+});
+
+app.post("/oauth2/token2", function (req,res){
+  var request = new Request(req);
+  var response = new Response(res);
+  return app.oauth.token(request,response)
+    .then(token => {
+      res.setHeader("Content-Type", "application/json;charset=UTF-8");
+      res.setHeader("Cache-Control", "no-store");
+      res.setHeader("Pragma", "no-cache");
+      console.log (res.getHeaders());
+      let body = {
+        "access_token": token.accessToken,
+        "token_type": "bearer",
+        "expires_in": 3600
+      };
+      body.access_token = jwt.sign(body,"topSecret");
       console.log (body);
       res.json(body);
     }).catch (err => {
