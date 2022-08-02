@@ -37,9 +37,11 @@ app.post("/oauth2/token", function (req,res){
   var response = new Response(res);
   return app.oauth.token(request,response)
     .then(token => {
-      token.access_token = token.accessToken;
-      console.log(token);
-      res.json(token);
+      res.json({
+        "access_token": token.accessToken,
+        "token_type": "bearer",
+        "expires_in": 3600
+      })
     }).catch (err => {
       res.status(err.code || 500).json(err);
     })
