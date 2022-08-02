@@ -37,6 +37,9 @@ app.post("/oauth2/token", function (req,res){
   var response = new Response(res);
   return app.oauth.token(request,response)
     .then(token => {
+      res.setHeader("Content-Type", "application/json;charset=UTF-8");
+      res.setHeader("Cache-Control", "no-store");
+      res.setHeader("Pragma", "no-cache");
       res.json({
         "access_token": token.accessToken,
         "token_type": "bearer",
