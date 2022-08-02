@@ -11,19 +11,12 @@ router.post("/oauth/token", function (req, res) {
   console.log (req.body);
   console.log ("++++++++++++++++++++++++++END BODY. HEADER:");
   console.log (req.headers);
-  console.log ("Sent auth:2YotnFZFEjr1zCsiCMWpAA");
-  console.log (req.get("clientId"));
-  console.log (req.get("clientID"));
-  console.log (req.get("client_id"));
-  console.log (req.get("client_ID"));
-  console.log (req.body.params);
   console.log ("==========================END=============================");
 
   res.send (JSON.parse(JSON.stringify({
-    "access_token": "2YotnFZFEjr1zCsiCMWpAA",
+    "access_token": "eyJhbGciOiJIUzI1NiIsImtpZCI6IjQiLCJ2ZXIiOiIxIiwidHlwIjoiSldUIn0.eyJhY2Nlc3NfdG9rZW4iOiI3anNlYnA2NmV4cUtQQktoRlJTam9hSDAiLCJjbGllbnRfaWQiOiJkc2FudXpnc3Y2NGpjYzc1Y2FiMWJreGkiLCJlaWQiOjcyNTc3NjQsInN0YWNrX2tleSI6IlM3IiwicGxhdGZvcm1fdmVyc2lvbiI6MiwiY2xpZW50X3R5cGUiOiJTZXJ2ZXJUb1NlcnZlciIsInBpZCI6MTg2fQ.tBNqAzHctfLhcAYc0gXVOazPM3ekNmklDAEbB8cVLsQ.GmZ5IVFmxDEsf6vNcreVFmYrexB0ZpAA8QU-i1n0K8V8e43X_NiesUf7C-X-osoVj8osXiDvPLPWeTBLKDjYOFTmUfYpvhmNjcnIeFqqAk46KPuPyMykjT_aAIKoUokOI9ORF1HU7NCwntFXJsRYK3bhEP88SG-IQcS3T72X5",
     "token_type":"bearer",
-    "expires_in":3600,
-    "scope":"write"
+    "expires_in":36000
   })));
 });
 
@@ -32,7 +25,6 @@ router.post("/events", function (req, res) {
   console.log (req.body);
   console.log ("++++++++++++++++++++++++++END BODY. HEADER:");
   console.log (req.headers);
-  console.log (req.headers.authorization)
   console.log ("==========================END=============================");
 
   res.send ("Success");
