@@ -37,6 +37,8 @@ app.post("/oauth2/token", function (req,res){
   var response = new Response(res);
   return app.oauth.token(request,response)
     .then(token => {
+      token.access_token = token.accessToken;
+      console.log(token);
       res.json(token);
     }).catch (err => {
       res.status(err.code || 500).json(err);
