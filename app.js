@@ -40,11 +40,14 @@ app.post("/oauth2/token", function (req,res){
       res.setHeader("Content-Type", "application/json;charset=UTF-8");
       res.setHeader("Cache-Control", "no-store");
       res.setHeader("Pragma", "no-cache");
-      res.json({
+      console.log (res.getHeaders());
+      let body = {
         "access_token": token.accessToken,
         "token_type": "bearer",
         "expires_in": 3600
-      })
+      };
+      console.log (body);
+      res.json(body);
     }).catch (err => {
       res.status(err.code || 500).json(err);
     })
