@@ -26,8 +26,13 @@ router.post("/events", function (req, res) {
   console.log ("++++++++++++++++++++++++++END BODY. HEADER:");
   console.log (req.headers);
   console.log ("==========================END=============================");
-
-  res.send ("Success");
+  if (!req.headers.authorization) {
+    res.send(401);
+  } else if (req.headers.authorization.split(' ')[1] === "null") {
+    res.send(401);
+  } else {
+    res.send ("Success");
+  }
 })
 
 
